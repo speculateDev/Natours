@@ -22,6 +22,7 @@ const viewRouter = require('./routes/viewRoutes');
 // Load environment variable
 dotenv.config({ path: './config.env' });
 
+// Start express App
 const app = express();
 
 app.set('view engine', 'pug');
