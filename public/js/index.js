@@ -40,7 +40,7 @@ if (updateForm) {
     form.append('name', document.querySelector('#name').value);
     form.append('email', document.querySelector('#email').value);
     form.append('photo', document.querySelector('#photo').files[0]);
-    console.log(form);
+    // console.log(form);
 
     // const name = document.querySelector('#name').value;
     // const email = document.querySelector('#email').value;

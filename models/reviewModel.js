@@ -57,7 +57,7 @@ reviewSchema.pre(/^find/, function(next) {
 });
 
 reviewSchema.statics.calcAverageRatings = async function(tourId) {
-  console.log('tourId:', tourId);
+  // console.log('tourId:', tourId);
   const stats = await this.aggregate([
     {
       $match: { tour: tourId }
@@ -71,7 +71,7 @@ reviewSchema.statics.calcAverageRatings = async function(tourId) {
     }
   ]);
 
-  console.log('stats', stats);
+  // console.log('stats', stats);
 
   if (stats.length === 0) {
     await Tour.findByIdAndUpdate(tourId, {
@@ -112,7 +112,7 @@ reviewSchema.post('save', function() {
 reviewSchema.post(/^findOneAnd/, async function(doc, next) {
   // even if it's a query we can just execute it
   if (!doc) next(new AppError('No review exist with such ID!', 404));
-  console.log('doc:', doc);
+  // console.log('doc:', doc);
   await doc.constructor.calcAverageRatings(doc.tour);
 });
 

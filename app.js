@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
@@ -90,10 +91,13 @@ app.use(
   })
 );
 
+// Compressing exchanged text
+app.use(compression());
+
 // Test Middleware
 app.use((req, res, next) => {
   // console.log(req.headers  );
-  console.log('Hello from the middleware!');
+  // console.log('Hello from the middleware!');
   // console.log(req.cookies);
   next();
 });
